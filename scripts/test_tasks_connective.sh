@@ -7,7 +7,7 @@ for ip in $ip_list; do
   #echo $ip | cut -d '/' -f 1
   if ! echo $ip | cut -d '/' -f 1 | xargs ping -w1 -c1 > /dev/null; then
     issue=$(( $issue + 1 ));
-    echo `ip route get $ip | awk '/src/{print $NF}'`"->"${ip} ping have issue;
+    echo `date`" "`ip route get $ip | awk '/src/{print $NF}'`"->"${ip} ping have issue;
   fi
 done
 exit $issue
